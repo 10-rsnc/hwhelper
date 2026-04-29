@@ -1,0 +1,551 @@
+/* --- 1. BASE SETUP --- */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    /* FIX: This is the most important line to stop the horizontal shifting */
+    overflow-x: hidden; 
+    position: relative;
+    background: transparent !important; 
+    color: #000;
+    font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth;
+}
+
+/* --- 2. LAYOUT --- */
+.main-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    padding: 0 20px;
+}
+
+/* --- 3. STATUS LABEL --- */
+.status-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 0.8;
+    text-transform: uppercase;
+}
+
+.dot {
+    width: 7px;
+    height: 7px;
+    background: #000;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+/* --- 4. HERO TITLE --- */
+.hero-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 7.5rem; 
+    font-weight: 800;
+    line-height: 0.82; 
+    text-transform: none; 
+    margin: 0;
+    letter-spacing: -4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.line-1 { transform: translateX(-30px); }
+.line-2 { transform: translateX(30px); }
+
+.italic-tilt {
+    font-family: 'EB Garamond', serif !important;
+    font-weight: 400;
+    font-style: italic;
+    /* Increased size slightly for the new name */
+    font-size: 9rem; 
+    letter-spacing: -3px;
+    text-decoration: underline;
+    text-underline-offset: 15px;
+    text-decoration-thickness: 4px;
+    margin-top: 10px;
+    /* Subtle text shadow to make it feel "glassy" */
+    text-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+/* --- 5. DESCRIPTION --- */
+.description {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-top: 45px;
+    max-width: 500px;
+    opacity: 0.6;
+    font-weight: 500;
+}
+
+/* --- 6. BUTTONS --- */
+.button-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 45px;
+}
+
+.btn-black {
+    background: #000;
+    color: #fff;
+    padding: 16px 40px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s;
+}
+
+.btn-outline {
+    background: rgba(255, 255, 255, 0.1);
+    color: #000;
+    padding: 16px 40px;
+    border-radius: 6px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    backdrop-filter: blur(10px);
+    transition: 0.3s;
+}
+
+/* --- 7. NAVBAR & NAV BUTTON --- */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px 60px;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.logo-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem; 
+    font-weight: 900; 
+    letter-spacing: 6px; 
+    color: #000;
+    text-transform: uppercase;
+}
+
+.btn-download {
+    pointer-events: auto;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #000;
+    text-decoration: none;
+    border: 1.5px solid #000;
+    padding: 12px 20px;
+    border-radius: 4px;
+}
+
+/* --- 8. FEATURES SECTION --- */
+.features-section {
+    padding: 100px 60px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.feature-card {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(20px);
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    text-align: left;
+}
+
+/* This adds the "Halo" style to your 3 feature titles */
+.serif-title {
+    font-family: 'EB Garamond', serif !important;
+    font-weight: 400;
+    font-size: 2.8rem;
+    margin: 0 0 15px 0;
+    letter-spacing: -1px;
+}
+
+.feature-tag {
+    font-size: 0.6rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #666;
+    display: block;
+    margin-bottom: 20px;
+}
+
+/* --- 9. ANIMATIONS --- */
+@keyframes revealUp {
+    from { opacity: 0; transform: translateY(30px); visibility: visible; }
+    to { opacity: 1; transform: translateY(0); visibility: visible; }
+}
+
+@keyframes pureFade {
+    from { opacity: 0; visibility: hidden; }
+    to { opacity: 0.6; visibility: visible; }
+}
+
+.line-1, .line-2, .italic-tilt, .description, .button-group {
+    opacity: 0;
+    visibility: hidden;
+    animation: revealUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.status-label, .scroll-indicator, .logo-text, .btn-download {
+    opacity: 0;
+    visibility: hidden;
+    animation: pureFade 2s ease-in forwards;
+}
+
+/* Delays */
+.line-1 { animation-delay: 0.5s; }
+.line-2 { animation-delay: 0.7s; }
+.italic-tilt { animation-delay: 0.9s; }
+.description { animation-delay: 1.2s; }
+.button-group { animation-delay: 1.4s; }
+
+/* --- 7. SCROLL INDICATOR (Fixed to hero) --- */
+.scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 5px;
+    opacity: 0.4;
+    text-transform: uppercase;
+    /* It will naturally disappear as the user scrolls past the hero */
+}
+
+/* --- 11. DEMO SECTION --- */
+.demo-section {
+    padding: 150px 60px;
+    background: rgba(255, 255, 255, 0); /* Subtle contrast */
+}
+
+.demo-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr; /* Text on left, image on right */
+    gap: 80px;
+    align-items: center;
+}
+
+.demo-text {
+    max-width: 450px;
+}
+
+.demo-image-wrapper {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 50px 100px rgba(0,0,0,0.1);
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.app-screenshot {
+    width: 100%;
+    display: block;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.demo-image-wrapper:hover .app-screenshot {
+    transform: scale(1.05);
+}
+
+/* Soft glow behind the image to match the Aurora background */
+.image-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(213, 225, 255, 0.4) 0%, transparent 70%);
+    z-index: -1;
+    filter: blur(40px);
+}
+
+/* Responsive adjustment */
+@media (max-width: 900px) {
+    .demo-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 50px;
+    }
+    .demo-text {
+        margin: 0 auto;
+    }
+}
+
+#features {
+    /* Adjust this value (20vh to 30vh) to get the perfect center 
+       depending on your screen size */
+    scroll-margin-top: 30vh; 
+}
+
+/* --- SCROLL REVEAL ANIMATION (FIXED) --- */
+:root {
+    --reveal-speed: 1.2s; 
+}
+
+.reveal {
+    opacity: 0;
+    visibility: hidden;
+    /* Removed left: 50% and translateX to stop the horizontal shifting */
+    transform: translateY(40px); 
+    transition: opacity var(--reveal-speed) ease-out, 
+                transform var(--reveal-speed) cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+.reveal.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.demo-image-wrapper {
+    max-width: 100%;
+    overflow: hidden; 
+}
+
+/* Ensure these sections stay centered naturally using margin */
+.features-section, 
+.demo-container, 
+.section-divider {
+    position: relative;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    left: 0 !important; /* Forces reset of any previous positioning */
+}
+
+/* --- 12. DOWNLOAD CTA SECTION --- */
+.download-cta {
+    padding: 150px 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cta-content {
+    max-width: 600px;
+}
+
+.cta-description {
+    font-size: 1.1rem;
+    opacity: 0.6;
+    margin-bottom: 40px;
+}
+
+.btn-primary-large {
+    display: inline-block;
+    background: #000;
+    color: #fff;
+    padding: 22px 50px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary-large:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    background: #111;
+}
+
+.version-info {
+    display: block;
+    margin-top: 25px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    opacity: 0.4;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* --- BRAND GRADIENT TEXT --- */
+.brand-gradient {
+    /* We use the same color palette as your Lumina background */
+    background: linear-gradient(135deg, #6e8efb, #a777e3, #ffcbff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    /* Keeps the text bold and sharp */
+    font-weight: 800;
+    display: inline-block;
+}
+
+/* Update the button hover to make the gradient "glow" */
+.btn-primary-large:hover .brand-gradient {
+    filter: brightness(1.2);
+    transition: filter 0.3s ease;
+}
+
+.btn-primary-large {
+    display: inline-block;
+    background: #000;
+    color: #fff;
+    padding: 22px 50px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* --- 13. FOOTER SECTION --- */
+.site-footer {
+    position: relative; /* Required for z-index to work */
+    z-index: 10;        /* Higher than the background layer */
+    padding: 80px 60px 40px;
+    background: transparent;
+    max-width: 1200px;
+    margin: 0 auto;
+    /* Ensure it doesn't get pushed under by previous sections */
+    clear: both; 
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 60px;
+}
+
+/* --- FOOTER SPECIFIC LOGO --- */
+.footer-logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    /* Ensure the container doesn't clip the gradient glow */
+    padding: 5px 0;
+}
+
+/* --- CLEAN STEALTH LOGO --- */
+.oculus-gradient {
+    /* Kill the gradient and clipping */
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    -webkit-text-fill-color: initial !important;
+    background-clip: initial;
+    
+    /* Solid Black Style */
+    color: #000000;
+    font-weight: 900;
+    letter-spacing: -2px;
+    display: inline-block;
+    
+    /* Ensure it doesn't have any leftover filters */
+    filter: none !important;
+}
+
+/* Subtle hover for the black logo */
+.oculus-gradient:hover {
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.footer-links {
+    text-align: right;
+}
+
+.links-label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    opacity: 0.4;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    color: #000;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: opacity 0.3s ease;
+}
+
+.footer-links a:hover {
+    opacity: 0.5;
+}
+
+.footer-bottom {
+    padding-top: 30px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    opacity: 0.4;
+}
+
+/* Reusing your section divider style for the footer */
+.site-footer .section-divider {
+    margin: 0;
+    width: 100%;
+    opacity: 0.1;
+}
+
+/* --- TILTED LOGO STYLE --- */
+.oculus-footer-logo {
+    font-family: 'EB Garamond', serif !important; /* Elegant serif */
+    font-style: italic; /* The tilt */
+    font-weight: 500;
+    font-size: 2.2rem; /* Slightly larger to show off the font details */
+    color: #000;
+    letter-spacing: -0.5px;
+    
+    /* Remove uppercase forcing */
+    text-transform: none !important; 
+    
+    /* Subtle tilt adjustment if you want it even more "leaned" */
+    display: inline-block;
+    transform: skewX(-2deg); /* Adds a tiny bit more architectural lean */
+    
+    /* Ensure it's sharp */
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Hover effect to make it feel interactive */
+.oculus-footer-logo:hover {
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+    cursor: default;
+}
