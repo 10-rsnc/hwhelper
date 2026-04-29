@@ -1,54 +1,270 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>homework helper</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="index.css">
-    <script src="https://makegradient.com/embed.js"></script>
-</head>
-<body>
+/* --- 1. BASE SETUP --- */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    /* Keep background transparent for the Aurora embed */
+    background: transparent !important; 
+    color: #000;
+    font-family: 'Inter', sans-serif;
+    overflow: hidden; /* Keeps the focus on the hero section */
+}
 
-    <nav class="navbar">
-        <div class="logo-text">HOMEWORK HELPER</div>
-        <a href="homework helper.py" class="btn-download">Download</a>
-    </nav>
+/* --- 2. LAYOUT --- */
+.main-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    padding: 0 20px;
+}
 
-    <div 
-        data-lumina-gradient
-        data-colors='["#d5e1ff","#f7dbff","#ffcbff","#b6ebff","#ede8ff"]'
-        data-mode="mesh"
-        data-noise="0.25"
-        data-speed="1"
-        style="width: 100vw; height: 100vh; position: fixed; inset: 0; z-index: -1;"
-    ></div>
+/* --- 3. STATUS LABEL (The "Live" indicator) --- */
+.status-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 0.8;
+    text-transform: uppercase;
+}
 
-    <main class="main-content">
-        
-        <div class="status-label">
-            <span class="dot"></span> LIVE SOLUTIONS
-        </div>
+.dot {
+    width: 7px;
+    height: 7px;
+    background: #000;
+    border-radius: 50%;
+    /* Subtle pulse animation like a live server */
+    animation: pulse 2s infinite;
+}
 
-        <h1 class="hero-title">
-            <div class="line-1">Built</div>
-            <div class="line-2">with</div>
-            <div class="line-3 italic-tilt">precision</div>
-        </h1>
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
+}
 
-        <p class="description">
-            Unmatched speed and accuracty thanks to<br>
-            optical character recognition(OCR) and Gemini
-        </p>
+/* --- 4. HERO TITLE (The Staggered Velocity Look) --- */
+.hero-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 7.5rem; 
+    font-weight: 800;
+    line-height: 0.82; 
+    /* text-transform: uppercase;  <-- DELETE OR COMMENT OUT THIS LINE */
+    text-transform: none; /* This forces it to respect your HTML typing */
+    margin: 0;
+    letter-spacing: -4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-        <div class="button-group">
-            <a href="https://discord.com" class="btn-black">Join Discord</a>
-            <a href="#" class="btn-outline">View Features</a>
-        </div>
+.line-1 {
+    transform: translateX(-30px); /* Offset left */
+}
 
-        <div class="scroll-indicator">SCROLL</div>
+.line-2 {
+    transform: translateX(30px); /* Offset right */
+}
 
-    </main>
+.italic-tilt {
+    /* 1. We must force the font change for this specific class */
+    font-family: 'EB Garamond', serif !important; /* Switch to cinematic serif */
+    
+    /* 2. Style settings for the serif look */
+    font-weight: 400; /* Serif looks best thinner */
+    font-style: italic; /* The Tilt */
+    font-size: 8rem; /* Keeps it massive */
+    letter-spacing: -2px; /* Tight, sophisticated spacing */
+    
+    /* 3. The industrial underline */
+    text-decoration: underline;
+    text-underline-offset: 12px;
+    text-decoration-thickness: 6px;
+    margin-top: 10px;
+}
 
-</body>
-</html>
+/* --- 5. DESCRIPTION --- */
+.description {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-top: 45px;
+    max-width: 500px;
+    opacity: 0.6;
+    font-weight: 500;
+}
+
+/* --- 6. BUTTONS --- */
+.button-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 45px;
+}
+
+.btn-black {
+    background: #000;
+    color: #fff;
+    padding: 16px 40px;
+    border-radius: 6px; /* Sharper corners like the example */
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s;
+}
+
+.btn-outline {
+    background: rgba(255, 255, 255, 0.1);
+    color: #000;
+    padding: 16px 40px;
+    border-radius: 6px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    backdrop-filter: blur(10px);
+    transition: 0.3s;
+}
+
+.btn-black:hover {
+    transform: translateY(-4px) scale(1.03);
+    background: #222;
+}
+
+.btn-outline:hover {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.4);
+}
+
+/* --- 7. SCROLL INDICATOR --- */
+.scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 5px;
+    opacity: 0.4;
+    text-transform: uppercase;
+}
+
+/* --- NAVBAR LAYOUT ADJUSTMENT --- */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px 60px;
+    z-index: 10;
+    display: flex; /* This aligns logo left and button right */
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box; /* Prevents padding from breaking layout */
+}
+
+/* --- DOWNLOAD BUTTON STYLE --- */
+.btn-download {
+    pointer-events: auto; /* Ensures the button is actually clickable */
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #000;
+    text-decoration: none;
+    border: 1.5px solid #000;
+    padding: 12px 20px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    
+    /* Pure fade animation to match the logo */
+    opacity: 0;
+    visibility: hidden;
+    animation: pureFade 2s ease-in forwards;
+    animation-delay: 0.4s; /* Appears slightly after the logo */
+}
+
+.btn-download:hover {
+    background: #000;
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+/* Merged version: keeps the size AND the correct staggered animation */
+.logo-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem; 
+    font-weight: 900; 
+    letter-spacing: 6px; 
+    color: #000;
+    text-transform: uppercase;
+    /* Do NOT set opacity: 1 here; let the revealUp animation handle it */
+}
+
+/* --- 1. THE REVEAL ANIMATION --- */
+@keyframes revealUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+        visibility: visible; /* Makes it "exist" the moment the animation starts */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        visibility: visible; /* Keeps it visible at the end */
+    }
+}
+
+/* --- 2. THE ELEMENTS (Base State) --- */
+.line-1, 
+.line-2, 
+.italic-tilt, 
+.description, 
+.button-group {
+    opacity: 0;
+    visibility: hidden; /* This keeps them truly blank while waiting */
+    animation: revealUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* --- 3. THE DELAYS --- */
+.line-1 { animation-delay: 0.5s; }
+.line-2 { animation-delay: 0.7s; }
+.italic-tilt { animation-delay: 0.9s; }
+.description { animation-delay: 1.2s; }
+.button-group { animation-delay: 1.4s; }
+
+/* --- NEW FADE-ONLY ANIMATION --- */
+@keyframes pureFade {
+    from { 
+        opacity: 0; 
+        visibility: hidden; 
+    }
+    to { 
+        opacity: 0.6; /* Keeps them slightly subtle/dimmed as originally intended */
+        visibility: visible; 
+    }
+}
+
+/* Applying it to the status label and scroll indicator */
+.status-label, 
+.scroll-indicator,
+.logo-text {
+    opacity: 0;
+    visibility: hidden;
+    /* Using a slower 2s fade for a "ghostly" smooth entrance */
+    animation: pureFade 2s ease-in forwards;
+}
+
+/* Timing: They appear along with the very first and very last elements */
+.status-label { 
+    animation-delay: 0.2s; 
+}
+
+.scroll-indicator { 
+    animation-delay: 1.8s; /* Appears last, after the buttons are settled */
+}
