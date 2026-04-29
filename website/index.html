@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oculus | Homework Helper</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <script src="https://makegradient.com/embed.js"></script>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo-text">Oculus</div>
+        <a href="homework helper.py" class="btn-download">Download</a>
+    </nav>
+
+    <div 
+        data-lumina-gradient
+        data-colors='["#d5e1ff","#f7dbff","#ffcbff","#b6ebff","#ede8ff"]'
+        data-mode="mesh"
+        data-noise="0.25"
+        data-speed="1"
+        style="width: 100vw; height: 100vh; position: fixed; inset: 0; z-index: -1;"
+    ></div>
+
+    <main class="main-content">
+        
+        <div class="status-label">
+            <span class="dot"></span> LIVE SOLUTIONS
+        </div>
+
+        <h1 class="hero-title">
+            <div class="line-1">Built</div>
+            <div class="line-2">with</div>
+            <div class="line-3 italic-tilt">precision.</div>
+        </h1>
+
+        <p class="description">
+            Unmatched speed and accuracty thanks to<br>
+            optical character recognition(OCR) and Gemini
+        </p>
+
+        <div class="button-group">
+            <a href="https://discord.gg/gets49vb" class="btn-black">Join Discord</a>
+            <a href="#features" class="btn-outline">View Features</a>
+        </div>
+
+        <div class="scroll-indicator">SCROLL</div>
+
+    </main>
+
+    <section id="features" class="features-section reveal">
+        <div class="feature-card">
+            <span class="feature-tag">Intelligence</span>
+            <h3 class="serif-title">Gemini-Powered Analysis</h3>
+            <p>Utilizing Gemini 2.5 Flash to provide deep explanations and instant solutions for complex academic problems.</p>
+        </div>
+
+        <div class="feature-card">
+            <span class="feature-tag">OCR</span>
+            <h3 class="serif-title">Scan & Solve</h3>
+            <p>Built-in optical character recognition extracts text from your screen in English and Korean with column-aware accuracy.</p>
+        </div>
+
+        <div class="feature-card">
+            <span class="feature-tag">Performance</span>
+            <h3 class="serif-title">Optimized Workflow</h3>
+            <p>A minimalist interface designed for speed, featuring built-in retry logic to ensure you never lose your progress.</p>
+        </div>
+    </section>
+
+    <section class="demo-section reveal">
+        <div class="demo-container">
+            <div class="demo-text">
+                <span class="feature-tag">Demonstration</span>
+                <h2 class="serif-title">Seamless Integration</h2>
+                <p>Experience the precision of the Scan & Solve engine. From complex math to Korean literature, Homework Helper analyzes your screen in real-time to provide the clarity you need.</p>
+            </div>
+            <div class="demo-image-wrapper">
+                <img src="helper.jpg" alt="Homework Helper Interface" class="app-screenshot">
+            </div>
+        </div>
+    </section>
+
+    <section class="download-cta reveal">
+        <div class="cta-content">
+            <span class="feature-tag">Get Started</span>
+            <h2 class="serif-title">Ready to see clearly?</h2>
+            <p class="cta-description">Experience the future of intelligent screen analysis with Oculus.</p>
+            
+            <a href="Oculus.py" class="btn-primary-large">
+                Download <span class="brand-gradient">Oculus</span> v1.0
+            </a>
+            
+            <span class="version-info">Supports Windows & Mac • Python 3.10+</span>
+        </div>
+    </section>
+
+    <footer class="site-footer reveal">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <span class="oculus-footer-logo">Oculus</span>
+            </div>
+            
+            <div class="footer-links">
+                <span class="links-label">Socials</span>
+                <ul>
+                    <li><a href="https://discord.gg/gets49vb">Discord</a></li>
+                    <li><a href="#">Roblox</a></li>
+                    <li><a href="https://www.youtube.com/@ketchuphook">Youtube</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <div class="footer-bottom">
+            <p>© Oculus // 2026. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 1. Tell the browser "Do NOT remember my scroll position"
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+
+        // 2. Force scroll to top right when the script loads
+        window.scrollTo(0, 0);
+
+        // 3. Reveal Animation Logic (your existing observer)
+        const observerOptions = {
+            threshold: 0.15 
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                } else {
+                    entry.target.classList.remove('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    </script>
+
+</body>
+</html>
