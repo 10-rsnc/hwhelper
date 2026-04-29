@@ -1,0 +1,148 @@
+/* --- 1. KEYFRAMES --- */
+@keyframes revealUp {
+    from { opacity: 0; transform: translateY(30px); visibility: visible; }
+    to { opacity: 1; transform: translateY(0); visibility: visible; }
+}
+
+@keyframes pureFade {
+    from { opacity: 0; visibility: hidden; }
+    to { opacity: 1; visibility: visible; }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+/* --- 2. BASE SETUP --- */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: #fff !important; 
+    color: #000;
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+}
+
+/* --- 3. ANIMATION ASSIGNMENTS --- */
+.line-1, .line-2, .italic-tilt, .description, .button-group {
+    opacity: 0;
+    visibility: hidden;
+    animation: revealUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.logo-text, .btn-download, .status-label, .scroll-indicator {
+    opacity: 0;
+    visibility: hidden;
+    animation: pureFade 1.5s ease-in forwards;
+}
+
+/* DELAYS */
+.logo-text { animation-delay: 0.2s; }
+.status-label { animation-delay: 0.4s; }
+.btn-download { animation-delay: 0.6s; }
+.line-1 { animation-delay: 0.8s; }
+.line-2 { animation-delay: 1.0s; }
+.italic-tilt { animation-delay: 1.2s; }
+.description { animation-delay: 1.4s; }
+.button-group { animation-delay: 1.6s; }
+.scroll-indicator { animation-delay: 2.0s; }
+
+/* --- 4. LAYOUT STYLES --- */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px 60px;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.logo-text {
+    font-weight: 900;
+    letter-spacing: 6px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+.btn-download {
+    pointer-events: auto;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: 1.5px solid #000;
+    padding: 8px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #000;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.hero-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 7.5rem; 
+    line-height: 0.82;
+    letter-spacing: -4px;
+}
+
+.line-1 { transform: translateX(-30px); }
+.line-2 { transform: translateX(30px); }
+
+.italic-tilt {
+    font-family: 'EB Garamond', serif !important;
+    font-style: italic;
+    font-size: 8rem;
+    text-decoration: underline;
+    text-underline-offset: 12px;
+}
+
+.status-label {
+    font-size: 0.65rem;
+    letter-spacing: 2.5px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dot {
+    width: 7px;
+    height: 7px;
+    background: #000;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+.description {
+    margin-top: 45px;
+    max-width: 500px;
+    opacity: 0.7;
+}
+
+.btn-black {
+    background: #000;
+    color: #fff;
+    padding: 16px 40px;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    font-size: 0.65rem;
+    letter-spacing: 5px;
+}
